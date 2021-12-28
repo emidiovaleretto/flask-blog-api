@@ -1,6 +1,6 @@
 {
    "python.linting.pylintEnabled": true,
-   "python.linting.enabled": true,
+   "python.linting.enabled": false,
    "python.linting.pycodestyleEnabled": false,
    "python.linting.flake8Enabled": true,
    "python.terminal.activateEnvironment": false,
@@ -22,5 +22,6 @@
    },
    "files.autoSave": "off",
    "workbench.colorTheme": "Visual Studio Dark",
-   "editor.defaultFormatter": "HookyQR.beautify"
+   "editor.defaultFormatter": "ms-python.vscode-pylance",
+   "python.pythonPath": "flaskblogapi\\Scripts\\python.exe"
 }
