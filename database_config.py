@@ -1,9 +1,9 @@
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from decouple import config
 
 app = Flask(__name__)
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 
 db = SQLAlchemy(app)
@@ -29,9 +29,9 @@ def initialize_database():
     db.create_all()
 
     admin = Author(
-        name=config('ADMIN_NAME'), 
-        email=config('ADMIN_EMAIL'), 
-        password=config('ADMIN_PASSWORD'), 
+        name=os.environ.get('ADMIN_NAME'), 
+        email=os.environ.get('ADMIN_EMAIL'), 
+        password=os.environ.get('ADMIN_PASSWORD'), 
         is_admin=True
         )
     db.session.add(admin)
