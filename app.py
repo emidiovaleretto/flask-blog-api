@@ -230,4 +230,5 @@ def delete_author(author, id_author):
         'message': f'Author [{author_to_delete.name}] deleted successfully'
         }, 200)
 
-app.run(port=5000, host='localhost', debug=True)
+if __name__ == '__main__':
+    app.run(port=5000, host='localhost', debug=True)
