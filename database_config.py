@@ -29,9 +29,9 @@ def initialize_database():
     db.create_all()
 
     admin = Author(
-        name='emidio', 
-        email='emidio.valereto@gmail.com', 
-        password='123456', 
+        name=config('ADMIN_NAME'), 
+        email=config('ADMIN_EMAIL'), 
+        password=config('ADMIN_PASSWORD'), 
         is_admin=True
         )
     db.session.add(admin)
