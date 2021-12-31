@@ -22,6 +22,5 @@
    },
    "files.autoSave": "off",
    "workbench.colorTheme": "Dracula",
-   "editor.defaultFormatter": "ms-python.vscode-pylance",
-   "python.pythonPath": "flaskblogapi\\Scripts\\python.exe"
-}
+   "editor.defaultFormatter": "ms-python.python",
+   "python.formatting.provider": "black"}
