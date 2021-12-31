@@ -46,8 +46,11 @@ def login():
         token = jwt.encode({
             'id_author': user.id_author,
             'exp': time_to_expiry
-        }, SECRET_KEY)
-        return jsonify({'token': token.decode('utf-8')})
+        }, 
+            key=SECRET_KEY, 
+            algorithm='HS256'
+        )
+        return jsonify({'token': token})
     return make_response("Invalid login", 401, {
                 'WWW-Authenticate': 'Basic realm="Login required"'
                 })
