@@ -47,7 +47,7 @@ def login():
             'id_author': user.id_author,
             'exp': time_to_expiry
         }, SECRET_KEY)
-        return jsonify({'token': token.decode('UTF-8')})
+        return jsonify({'token': token.decode('utf-8')})
     return make_response("Invalid login", 401, {
                 'WWW-Authenticate': 'Basic realm="Login required"'
                 })
