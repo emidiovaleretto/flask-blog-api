@@ -2,7 +2,7 @@ import jwt
 from functools import wraps
 from flask import jsonify, request, make_response
 from datetime import datetime, timedelta
-from database_config import Author, Post, app, db, SECRET_KEY
+from database_config import Author, Post, app, db
 
 
 def token_required(func):
@@ -18,7 +18,7 @@ def token_required(func):
             return jsonify({"message": "Token not found."}, 401)
 
         try:
-            response = jwt.decode(token, SECRET_KEY)
+            response = jwt.decode(token, "secret")
             # If token is valid, get the user_id from the token
             author = Author.query.filter_by(id_author=response["id_author"]).first()
         except:
@@ -46,12 +46,9 @@ def login():
     if auth.password == user.password:
         token = jwt.encode(
             {"id_author": user.id_author, "exp": time_to_expiry},
-            key=SECRET_KEY,
-            algorithm="HS256",
-        )
-        return jsonify(
-            {"token": token}
-        )
+            "secret",
+        ).decode("utf-8")
+        return jsonify({"token": token})
     return make_response(
         "Invalid login", 401, {"WWW-Authenticate": 'Basic realm="Login required"'}
     )
